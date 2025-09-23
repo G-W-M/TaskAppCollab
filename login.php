@@ -1,6 +1,5 @@
 <?php
 require 'db_connect.php';
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $user_input = $_POST['user_input'];
     $password = $_POST['password'];
@@ -13,7 +12,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-
         if (password_verify($password, $user['password'])) {
             echo "Login successful! Welcome, " . $user['username'];
         } else {
