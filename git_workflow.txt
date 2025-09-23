@@ -1,0 +1,16 @@
+# Git Workflow for TaskApp
+1. Initialize repo
+   git init
+2. Link remote repo
+   git remote add origin https://github.com/G-W-M/TaskApp.git
+3. Create branch for feature
+   git checkout -b feature/signup
+4. Stage and commit
+   git add .
+   git commit -m "Add signup form with validation and PHPMailer integration"
+5. Push to GitHub
+   git push -u origin feature/signup
+6. Merge into main 
+   git checkout main
+   git merge feature/signup
+   git push origin main
