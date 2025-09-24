@@ -76,6 +76,53 @@ class Layouts {
         </div>
         <?php
     }
+// Welcome banner section
+    public function welcome_banner($conf) { ?>
+        <div class="p-5 mb-4 bg-primary text-white rounded shadow-sm">
+            <div class="container py-5">
+                <h1 class="display-5 fw-bold">
+                    <i class="bi bi-stack"></i> Welcome to <?php echo $conf['site_name']; ?>
+                </h1>
+                <p class="col-md-8 fs-5">
+                    A simple task app where you can sign up, sign in, and view users.
+                </p>
+                <a href="signup.php" class="btn btn-light btn-lg shadow-sm me-2">
+                    <i class="bi bi-person-plus-fill"></i> Sign Up
+                </a>
+                <a href="signin.php" class="btn btn-success btn-lg shadow-sm">
+                    <i class="bi bi-box-arrow-in-right"></i> Sign In
+                </a>
+                <a href="userslist.php" class="btn btn-warning btn-lg shadow-sm ms-2">
+                    <i class="bi bi-people"></i> Users
+                </a>
+            </div>
+        </div>
+    <?php 
+    }
+
+    // Body  section
+    public function welcome_body($conf) { ?> 
+        <div class="container mb-5">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="bi bi-person-plus display-4 text-primary"></i>
+                    <h4 class="mt-3">Create an Account</h4>
+                    <p>Quickly register with your name, email, and password.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-box-arrow-in-right display-4 text-success"></i>
+                    <h4 class="mt-3">Secure Login</h4>
+                    <p>Sign in with OTP verification for extra security.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-people display-4 text-warning"></i>
+                    <h4 class="mt-3">View Users</h4>
+                    <p>See all registered users in the system with one click.</p>
+                </div>
+            </div>
+        </div>
+    <?php 
+}
 
     public function footer($conf) {
         ?>
