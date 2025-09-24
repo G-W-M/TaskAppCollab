@@ -10,12 +10,12 @@ $conn = new mysqli(
 );
 
 if ($conn->connect_error) {
-    die("❌ DB Connection failed: " . $conn->connect_error);
+    die(" DB Connection failed: " . $conn->connect_error);
 }
 
 class OTPGenerator {
     private $conn;
-    private $expiryMinutes = 5;
+    private $expiryMinutes = 3;
 
     public function __construct($dbConn) {
         $this->conn = $dbConn;
@@ -32,5 +32,24 @@ class OTPGenerator {
 
         return $otp;
     }
+        public function verify($userId, $enteredOtp) {
+        $sql = "SELECT otp_code, otp_expiry FROM users WHERE id=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
 
+        if (!$result) return false;
+
+        if ($result['otp_code'] == $enteredOtp && strtotime($result['otp_expiry']) > time()) {
+            $clear = $this->conn->prepare("UPDATE users SET otp_code=NULL, otp_expiry=NULL WHERE id=?");
+            $clear->bind_param("i", $userId);
+            $clear->execute();
+            return true;
+        }
+        return false;
+    }
 }
+?>
+
+
