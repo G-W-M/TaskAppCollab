@@ -17,5 +17,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$ObjLayouts->form_content($conf, $ObjForms);
+$ObjLayouts->formContent($conf, $ObjForms);
 $ObjLayouts->footer($conf);

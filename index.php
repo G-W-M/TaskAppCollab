@@ -6,9 +6,8 @@ $ObjLayouts->header($conf);
 $ObjLayouts->navbar($conf);
 
 // --- Page Content ---
-
-$ObjLayouts->welcome_banner($conf);
-$ObjLayouts->welcome_body($conf);
+$ObjLayouts->banner($conf);
+$ObjLayouts->welcomeBody($conf);
 
 
 // Render footer

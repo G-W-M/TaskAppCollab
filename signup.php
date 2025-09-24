@@ -3,7 +3,7 @@ require 'ClassAutoLoad.php';
 
 $ObjLayouts->header($conf);
 $ObjLayouts->navbar($conf);
-$ObjLayouts->banner();
+
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,5 +32,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$ObjLayouts->form_content($conf, $ObjForms);
+$ObjLayouts->formContent($conf, $ObjForms);
 $ObjLayouts->footer($conf);
