@@ -20,3 +20,6 @@ $conf['smtp_user'] = "linda.nyika@strathmore.edu";
 $conf['smtp_pass'] = "bgqy drbr yhxx nflw";
 $conf['smtp_port'] = 465;
 $conf['smtp_secure'] = "ssl"; // options: ssl, tls
+
+
+
