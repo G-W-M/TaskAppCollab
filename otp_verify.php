@@ -17,16 +17,16 @@ if ($conn->connect_error) {
 // Use OTPGenerator class
 $otpGen = new OTPGenerator($conn);
 
-$userId = 1; // example user ID
+$userId = 1; 
 $generatedOtp = $otpGen->generate($userId);
-echo "Generated OTP: " . $generatedOtp . "<br>";
+echo "Generated OTP is : " . $generatedOtp . "<br>";
 
 // Simulate user input
-$userInput = $generatedOtp; // change to wrong number to test failure
+$userInput = $generatedOtp; 
 
 if ($otpGen->verify($userId, $userInput)) {
     echo " OTP verified successfully!";
 } else {
-    echo "OTP invalid or expired.";
+    echo "OTP invalid or expired. Please try again.";
 }
 ?>
