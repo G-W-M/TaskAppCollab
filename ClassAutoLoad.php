@@ -12,6 +12,7 @@ $conn = new mysqli(
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
+$conn->set_charset('utf8mb4');
 
 // autoload classes
 $directories = ["Forms", "Globals", "Layouts"];
@@ -26,6 +27,6 @@ spl_autoload_register(function ($class_name) use ($directories) {
 });
 
 // create objects
-$ObjSendMail = new Mail();   // ✅ updated
+$ObjSendMail = new Mail();   // 
 $ObjLayouts  = new Layouts();
 $ObjForms    = new Forms();
