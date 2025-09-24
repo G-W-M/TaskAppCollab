@@ -4,7 +4,7 @@ require __DIR__ . "/conf.php";
 // Create DB connection
 $conn = new mysqli(
     $conf['db_host'],
-    $conf['db_user'],
+    $conf['db_user'] ,
     $conf['db_pass'],
     $conf['db_name']
 );
@@ -15,7 +15,8 @@ if ($conn->connect_error) {
 
 class OTPGenerator {
     private $conn;
-    private $expiryMinutes = 5;
+    private $expiryMinutes = 3; //valid time 
+
 
     public function __construct($dbConn) {
         $this->conn = $dbConn;
@@ -25,6 +26,7 @@ class OTPGenerator {
         $otp = rand(100000, 999999);
         $expiry = date("Y-m-d H:i:s", strtotime("+{$this->expiryMinutes} minutes"));
 
+
         $sql = "UPDATE users SET otp_code=?, otp_expiry=? WHERE id=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ssi", $otp, $expiry, $userId);
@@ -32,6 +34,7 @@ class OTPGenerator {
 
         return $otp;
     }
+
     public function verify($userId, $enteredOtp) {
         $sql = "SELECT otp_code, otp_expiry FROM users WHERE id=?";
         $stmt = $this->conn->prepare($sql);
@@ -47,7 +50,9 @@ class OTPGenerator {
             $clear->execute();
             return true;
         }
+
         return false;
     }
+
 }
 ?>

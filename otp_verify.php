@@ -22,11 +22,11 @@ $generatedOtp = $otpGen->generate($userId);
 echo "Generated OTP: " . $generatedOtp . "<br>";
 
 // Simulate user input
-$userInput = $generatedOtp; // change to wrong number to test failure
+$userInput = $generatedOtp; 
 
 if ($otpGen->verify($userId, $userInput)) {
-    echo " OTP verified successfully!";
+    echo " OTP verified successfully !";
 } else {
-    echo "OTP invalid or expired.";
+    echo "OTP invalid or expired Please request for another .";
 }
 ?>
