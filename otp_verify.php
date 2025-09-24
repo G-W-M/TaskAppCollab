@@ -1,0 +1,32 @@
+<?php
+require __DIR__ . "/conf.php";
+require __DIR__ . "/otp_generator.php";
+
+// Create DB connection
+$conn = new mysqli(
+    $conf['db_host'],
+    $conf['db_user'],
+    $conf['db_pass'],
+    $conf['db_name']
+);
+
+if ($conn->connect_error) {
+    die(" DB Connection failed: " . $conn->connect_error);
+}
+
+// Use OTPGenerator class
+$otpGen = new OTPGenerator($conn);
+
+$userId = 1; 
+$generatedOtp = $otpGen->generate($userId);
+echo "Generated OTP is : " . $generatedOtp . "<br>";
+
+// Simulate user input
+$userInput = $generatedOtp; 
+
+if ($otpGen->verify($userId, $userInput)) {
+    echo " OTP verified successfully!";
+} else {
+    echo "OTP invalid or expired. Please try again.";
+}
+?>
