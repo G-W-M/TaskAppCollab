@@ -20,7 +20,6 @@ class OTPGenerator {
     public function __construct($dbConn) {
         $this->conn = $dbConn;
     }
-
     public function generate($userId) {
         $otp = rand(100000, 999999);
         $expiry = date("Y-m-d H:i:s", strtotime("+{$this->expiryMinutes} minutes"));
