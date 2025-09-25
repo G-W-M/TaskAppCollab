@@ -14,3 +14,30 @@
    git checkout main
    git merge feature/signup
    git push origin main
+
+
+# Git workflow for TaskAppCollab
+1. Clone (first time only)
+git clone https://github.com/G-W-M/TaskAppCollab.git
+cd TaskAppCollab
+2. Configure (first time only)
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+3. Always Sync Before Work
+git checkout main
+git pull origin main
+4. Create a Branch
+git checkout -b feature-branch-name  e.g checkout -b frontend-feature
+6. Stage + Commit
+git add .
+git commit -m "Describe your change"
+7. Push Your Branch
+git push origin feature-branch-name
+9. Update After Merge
+git checkout main
+git pull origin main
+10. If Still Working on a Branch & Main Changed
+git checkout main
+git pull origin main
+git checkout feature-branch-name
+git merge main
