@@ -33,6 +33,8 @@ class Layouts {
                 }
             </style>
         </head>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src= C:\Apache24\htdocs\TaskAppCollab\Script\validation.js></script>
         <body>
         <?php
     }
@@ -175,7 +177,7 @@ class Layouts {
         </main>
 
         <!-- Bootstrap Bundle -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
         </html>
         <?php
     }

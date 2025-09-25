@@ -11,9 +11,23 @@ class Forms {
                 <label class="form-label">Email Address</label>
                 <input type="email" name="email" class="form-control" placeholder="Enter your email address" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 position-relative">
                 <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Create a password" required>
+                <div class="input-group">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Create a password" required>
+                    <span class="input-group-text" onclick="togglePassword('password', this)">
+                        <i class="bi bi-eye-slash"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-3 position-relative">
+                <label class="form-label">Confirm Password</label>
+                <div class="input-group">
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Re-enter password" required>
+                    <span class="input-group-text" onclick="togglePassword('confirm_password', this)">
+                        <i class="bi bi-eye-slash"></i>
+                    </span>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary w-100">
                 <i class="bi bi-person-plus"></i> Register
@@ -22,6 +36,7 @@ class Forms {
         <div class="text-center mt-3">
             <small>Already have an account? <a href="signin.php">Sign In</a></small>
         </div>
+
     <?php }
 
     // Signin form
@@ -31,9 +46,14 @@ class Forms {
                 <label class="form-label">Email Address</label>
                 <input type="email" name="email" class="form-control" placeholder="Enter your email address" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 position-relative">
                 <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                <div class="input-group">
+                    <input type="password" name="password" id="login_password" class="form-control" placeholder="Enter your password" required>
+                    <span class="input-group-text" onclick="togglePassword('login_password', this)">
+                        <i class="bi bi-eye-slash"></i>
+                    </span>
+                </div>
             </div>
             <button type="submit" class="btn btn-success w-100">
                 <i class="bi bi-box-arrow-in-right"></i> Login

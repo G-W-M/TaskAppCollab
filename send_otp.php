@@ -23,13 +23,13 @@ function send_otp_email($recipient_email) {
         $mail->isSMTP();                                            // Send using SMTP
         $mail->Host       = 'smtp.example.com';                     // Set the SMTP server to send through (e.g., smtp.gmail.com)
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'Juliet.Nyakiamo@strathmore.edu';               // SMTP username
+        $mail->Username   = 'gracecmungai@strathmore.edu';               // SMTP username
         $mail->Password   = '';                        // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable implicit TLS encryption
         $mail->Port       = 465;                                    // TCP port to connect to; use 587 for TLS, or 465 for SMTPS
 
         // Recipients
-        $mail->setFrom('no-reply@your_domain.com', 'Your App Name');
+        $mail->setFrom('taskapp@domain.com', 'TaskApp');
         $mail->addAddress($recipient_email);                        // Add a recipient
 
         // Content
