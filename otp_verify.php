@@ -1,32 +1,27 @@
 <?php
-require __DIR__ . "/conf.php";
-require __DIR__ . "/otp_generator.php";
+require 'ClassAutoLoad.php';
 
-// Create DB connection
-$conn = new mysqli(
-    $conf['db_host'],
-    $conf['db_user'],
-    $conf['db_pass'],
-    $conf['db_name']
-);
+$ObjLayouts->header($conf);
+$ObjLayouts->navbar($conf);
 
-if ($conn->connect_error) {
-    die(" DB Connection failed: " . $conn->connect_error);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $userId = intval($_POST['user_id']);
+    $enteredOtp = trim($_POST['otp']);
+
+    $otpGen = new OTPGenerator($conn);
+
+    if ($otpGen->verify($userId, $enteredOtp)) {
+        // Mark user as verified
+        $stmt = $conn->prepare("UPDATE users SET is_verified=1 WHERE id=?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+
+        echo "<div class='alert alert-success'>OTP verified! You can now sign in.</div>";
+        header("Refresh:2; url=signin.php");
+    } else {
+        echo "<div class='alert alert-danger'>Invalid or expired OTP.</div>";
+    }
 }
 
-// Use OTPGenerator class
-$otpGen = new OTPGenerator($conn);
-
-$userId = 1; 
-$generatedOtp = $otpGen->generate($userId);
-echo "Generated OTP is : " . $generatedOtp . "<br>";
-
-// Simulate user input
-$userInput = $generatedOtp; 
-
-if ($otpGen->verify($userId, $userInput)) {
-    echo " OTP verified successfully!";
-} else {
-    echo "OTP invalid or expired. Please try again.";
-}
-?>
+$ObjForms->otpForm();
+$ObjLayouts->footer($conf);

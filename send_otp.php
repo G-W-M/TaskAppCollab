@@ -11,7 +11,7 @@ function generate_otp($length = 6) {
 }
 
 // 3. Main logic to send the OTP
-function send_otp_email($recipient_email) {
+function send_otp_email($recipient_email,$otp) {
     // Generate the OTP
     $otp = generate_otp();
     
@@ -24,7 +24,7 @@ function send_otp_email($recipient_email) {
         $mail->Host       = 'smtp.example.com';                     // Set the SMTP server to send through (e.g., smtp.gmail.com)
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
         $mail->Username   = 'gracecmungai@strathmore.edu';               // SMTP username
-        $mail->Password   = '';                        // SMTP password
+        $mail->Password   = 'okvj qern ooxw tcwi';                        // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable implicit TLS encryption
         $mail->Port       = 465;                                    // TCP port to connect to; use 587 for TLS, or 465 for SMTPS
 
@@ -50,7 +50,8 @@ function send_otp_email($recipient_email) {
     }
 }
 
-// Example usage: You would get the recipient's email from a form or another script
+/*
+Example usage: You would get the recipient's email from a form or another script
 // This part might be provided by Person 2's work.
 if (isset($_GET['email'])) {
     $recipient_email = $_GET['email'];
@@ -64,3 +65,4 @@ if (isset($_GET['email'])) {
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'Recipient email not provided.']);
 }
+*/
